@@ -3,10 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import rawpy
 
-def tranform_ecc(images):
+def tranform_ecc(images, reference_index = -1, debug = False):
     # Setting the middle image as reference, assuming it was created as the median in time as well.
-    middle_index = len(images) // 2
-    reference_image = images[middle_index]
+    if reference_index == -1:
+        reference_index = len(images) // 2
+    
+    reference_image = images[reference_index]
 
     # Converting ref image to BW to work with tranformECC. Note! Might be an idea to separate color channels instead.
     ref_bw = cv2.cvtColor(reference_image, cv2.COLOR_RGB2GRAY)
@@ -21,8 +23,10 @@ def tranform_ecc(images):
 
     aligned_images = []
     for idx, image in enumerate(images):
-        print(idx)
-        if idx == middle_index:
+        if debug: 
+            print(idx)
+        if idx == reference_index:
+            aligned_images.append(image)
             continue
         
         img_bw = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)

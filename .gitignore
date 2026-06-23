@@ -1,0 +1,36 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# IDE and editor settings
+.vscode/
+.idea/
+
+# macOS files
+.DS_Store
+
+# Model and data files
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.npz
+
+# Logs and outputs
+logs/
+output/
+results/
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+
+# Photo files
+*.ARW

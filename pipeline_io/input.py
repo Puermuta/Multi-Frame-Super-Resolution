@@ -9,7 +9,7 @@ def _normalize(img):
     img = img / (img.max() + 1e-6)
     return img
 
-def import_images(path: str, scale = 1.0) -> list:
+def import_images(path: str, scale = 1.0, debug = False) -> list:
     folder = Path(path)
     
     images = []
@@ -24,7 +24,7 @@ def import_images(path: str, scale = 1.0) -> list:
                 use_camera_wb = True,           # closest to real scene colors
                 auto_bright_thr = 0.0,          # disables exposure scaling
                 highlight_mode = 0,             # no highlight reconstruction tricks
-                demosaic_algorithm = rawpy.DemosaicAlgorithm.AHD
+                demosaic_algorithm = rawpy.DemosaicAlgorithm.AHD #type: ignore
             )
     
         image = rgb.astype(np.float32) / 65535.0 * 255
@@ -33,5 +33,6 @@ def import_images(path: str, scale = 1.0) -> list:
         
         images.append(image)
 
-    print(f"Images found: {images_count}")
+    if debug:
+        print(f"Images found: {images_count}")
     return images
