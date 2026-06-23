@@ -10,13 +10,19 @@ This project is based on work done by Google researches in [this paper](https://
 ## Progress
 - Import and preprocess ✅
 - Per-frame global alignement ✅
-- Optical flow
+- Optical flow ✅
 - Continuous vector field constructor
 - Fusion and export of JPEG
 
 ## Dependencies
 
-numpy
-rawpy
-opencv-python
+- numpy
+- rawpy
+- opencv-python
+- matplotlib
 
+## TODO
+- Figure out how to do LK with 16-bit datasets. Now limited to 8-bit (see motion_lk.py). Might implement custom version in C++ if needed. Need to investigate the need for this though, might be precise enough with 8-bit.
+- Create __init__.py files for each module for a cleaner import experience.
+  
+_(No particular order)_
