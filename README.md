@@ -11,8 +11,8 @@ This project is based on work done by Google researches in [this paper](https://
 - Import and preprocess ✅
 - Per-frame global alignement ✅
 - Optical flow ✅
-- Continuous vector field constructor ✅
-- Fusion and export of PNG ✅
+- Continuous vector field constructor
+- Fusion and export of JPEG
 
 ## Dependencies
 
@@ -20,7 +20,6 @@ This project is based on work done by Google researches in [this paper](https://
 - rawpy
 - opencv-python
 - matplotlib
-- scipy
 
 ## TODO
 - Figure out how to do LK with 16-bit datasets. Now limited to 8-bit (see motion_lk.py). Might implement custom version in C++ if needed. Need to investigate the need for this though, might be precise enough with 8-bit.
