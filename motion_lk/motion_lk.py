@@ -21,14 +21,16 @@ def get_optical_flow(images, features, reference_index = -1, debug = False):
 
     features = np.array(features, dtype = np.float32)
 
-    results = []
+    good_reference_res = []
+    displacement_res = []
     for index, target in enumerate(images):
         if debug:
             print(f"LK-optical flow: {index}")
         if index == reference_index:
             # Fills a blank vector field with the correct shape 
             # for the reference image.
-            results.append((np.zeros((len(features), 2)), np.zeros((len(features), 2))))
+            good_reference_res.append(np.zeros((len(features), 2)))
+            displacement_res.append(np.zeros((len(features), 2)))
             continue
 
         target_bw = cv2.cvtColor(target, cv2.COLOR_BGR2GRAY)
@@ -48,6 +50,7 @@ def get_optical_flow(images, features, reference_index = -1, debug = False):
             criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 30, 0.01)
         )
 
+        status = status.flatten()
         good_reference = features[status == 1]
         good_tracked = tracked_features[status == 1]
         displacement = good_tracked - good_reference
@@ -58,11 +61,12 @@ def get_optical_flow(images, features, reference_index = -1, debug = False):
             print(displacement)
             print()
             #cv2.imwrite("debug_ref.png", ref_bw_8)
-            #cv2.imwrite("debug_target.png", target_bw_8)
+            cv2.imwrite("debug_target.png", target_bw_8)
 
-        results.append((good_reference, displacement))
+        good_reference_res.append(good_reference)
+        displacement_res.append(displacement)
 
-    return results
+    return good_reference_res, displacement_res
         
 
 

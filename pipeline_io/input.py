@@ -32,6 +32,7 @@ def import_images(path: str, scale = 1.0, debug = False) -> list:
         image = _normalize(image)
         
         images.append(image)
+        
 
     if debug:
         print(f"Images found: {images_count}")
