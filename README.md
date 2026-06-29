@@ -23,6 +23,8 @@ This project is based on work done by Google researches in [this paper](https://
 - scipy
 
 ## TODO
+- PRIORITIZED: Fix artifacts when generating photos.
+- PRIORITIZED: Use vectorization with numpy to optimize the calculation speed.
 - Figure out how to do LK with 16-bit datasets. Now limited to 8-bit (see motion_lk.py). Might implement custom version in C++ if needed. Need to investigate the need for this though, might be precise enough with 8-bit.
 - Create __init__.py files for each module for a cleaner import experience.
   
