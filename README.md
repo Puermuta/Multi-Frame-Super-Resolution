@@ -12,7 +12,7 @@ This project is based on work done by Google researches in [this paper](https://
 - Per-frame global alignement ✅
 - Optical flow ✅
 - Continuous vector field constructor ✅
-- Fusion and export of JPEG ✅
+- Fusion and export of PNG ✅
 
 ## Dependencies
 
@@ -25,6 +25,7 @@ This project is based on work done by Google researches in [this paper](https://
 ## TODO
 - PRIORITIZED: Fix artifacts when generating photos. Probable reason for artifacts: Rounding makes sub-pixel information cluster in pixel buckets. Solution: Use bilinear splatting instead of naive nearest pixel.
 - PRIORITIZED: Use vectorization with numpy to optimize the calculation speed.
+- PRIORITIZED: Export as 16-bit PNG to preserve color space.
 - Figure out how to do LK with 16-bit datasets. Now limited to 8-bit (see motion_lk.py). Might implement custom version in C++ if needed. Need to investigate the need for this though, might be precise enough with 8-bit.
 - Create __init__.py files for each module for a cleaner import experience.
   
